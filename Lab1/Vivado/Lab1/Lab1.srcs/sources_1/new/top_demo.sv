@@ -43,14 +43,16 @@ module top_demo
   logic [16:0] CURRENT_COUNT;
   logic [16:0] NEXT_COUNT;
   logic        smol_clk;
+
+  wire [3:0] sum;
   
-  // Place TicTacToe instantiation here
+  rippleAdder rA(sw[3:0], sw[7:4], btn[0], sum, led[0])
   
   // 7-segment display
   segment_driver driver(
   .clk(smol_clk),
   .rst(btn[3]),
-  .digit0(sw[3:0]),
+  .digit0(sum),
   .digit1(4'b0111),
   .digit2(sw[7:4]),
   .digit3(4'b1111),
